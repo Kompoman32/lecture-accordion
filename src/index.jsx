@@ -1,14 +1,22 @@
 import React from "react";
 import { render } from "react-dom";
-import {createItems} from "./generate-items";
+import { createItems } from "./generate-items";
+import { Accordion } from "./accordion";
+import "./index.css";
+
+const items = createItems();
 
 class App extends React.Component {
   render() {
-    return <div>Hello</div>;
+    const { userName } = this.props;
+    return (
+      <div style={{ backgroundColor: "red" }}>
+        Hello, {userName}
+        <Accordion items={items} />
+      </div>
+    );
   }
 }
 
-console.log(createItems())
-
 const root = document.getElementById("root");
-render(<App />, root);
+render(<App userName="Mike" />, root);
