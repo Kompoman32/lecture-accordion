@@ -1,21 +1,17 @@
 import * as React from "react";
-import { AccordionItem } from "./accordion-item";
+import { ListItem } from "./list-item";
 
-export class Accordion extends React.Component {
+export class List extends React.Component {
   state = { openedItem: null };
 
   onItemClick = item => {
-    if (this.state.openedItem !== item) {
-      this.setState({ openedItem: item });
-    } else {
-      this.setState({ openedItem: null });
-    }
+    this.props.onItemClick(item)
   };
 
   render() {
     const { items } = this.props;
     const elements = items.map(item => (
-      <AccordionItem
+      <ListItem
         key={item.id}
         item={item}
         onTitleClick={this.onItemClick}
