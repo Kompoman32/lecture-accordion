@@ -12,9 +12,20 @@ export class Accordion extends React.Component {
     }
   };
 
+  get filteredElements() {
+    const items = this.props.items;
+    const search = this.props.search;
+    if (!search) {
+      return items || [];
+    }
+
+    return (items || []).filter(
+      item => item.content.toLowerCase().indexOf(search.toLowerCase()) !== -1
+    );
+  }
+
   render() {
-    const { items } = this.props;
-    const elements = items.map(item => (
+    const elements = this.filteredElements.map(item => (
       <AccordionItem
         key={item.id}
         item={item}

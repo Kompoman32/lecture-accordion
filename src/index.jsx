@@ -4,19 +4,37 @@ import { createItems } from "./generate-items";
 import { Accordion } from "./accordion";
 import "./index.css";
 
-const items = createItems();
+const items = createItems(3000);
 
 class App extends React.Component {
+  state = { name: "", search: "" };
+
+  onNameChange = ev => {
+    this.setState({ name: ev.currentTarget.value || "" });
+  };
+
+  onSearchChange = ev => {
+    this.setState({ search: ev.currentTarget.value || "" });
+  };
+
   render() {
-    const { userName } = this.props;
+    const { name ,search} = this.state;
     return (
-      <div style={{ backgroundColor: "red" }}>
-        Hello, {userName}
-        <Accordion items={items} />
+      <div>
+        <input type="text" onChange={this.onNameChange} value={name} />
+        <br />
+        Hello, {name}
+        <br />
+        <label>
+          Поиск
+          <input type="text" onChange={this.onSearchChange} value={search} />
+        </label>
+        <br />
+        <Accordion items={items} search={search}/>
       </div>
     );
   }
 }
 
 const root = document.getElementById("root");
-render(<App userName="Mike" />, root);
+render(<App />, root);
