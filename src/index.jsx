@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     const { userName } = this.props;
     return (
-      <div style={{ backgroundColor: "red" }}>
+      <div>
         Hello, {userName}
         <Accordion items={items} />
       </div>

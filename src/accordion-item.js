@@ -27,13 +27,3 @@ export class AccordionItem extends React.Component {
     );
   }
 }
-
-function test() {
-  console.log(this.name);
-}
-
-const obj = { name: "Mike" };
-
-const bindedTest = test.bind(obj);
-
-bindedTest();
