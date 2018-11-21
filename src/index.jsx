@@ -4,8 +4,9 @@ import {createItems} from "./generate-items";
 import {List} from "./list";
 import "./index.css";
 import {ItemCardContainer} from "./item-card-container";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const items = createItems();
+export const items = createItems();
 
 class App extends React.Component {
 
